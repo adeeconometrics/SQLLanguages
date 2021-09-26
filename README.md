@@ -6,3 +6,21 @@ This repository is intented for quick overview of SQL implmentation from differe
 - DQL - Data Query Language
 - DML - Data Manipulation Language
 - DCL - Data Control Language
+
+--- 
+## SQL Data types
+- `character`
+- `varchar`
+- `boolean`
+- `smallint`
+- `integer`
+- `decimal`
+- `numeric`
+- `real`
+- `float`
+- `double precision`
+- `date`
+- `time`
+- `timestamp`
+- `clob`
+- `blob`
