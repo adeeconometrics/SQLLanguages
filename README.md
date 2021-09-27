@@ -33,3 +33,9 @@ For each vendor-specific implementation, SQL statements will cover:
 - Boolean
 - XML
 - JSON
+
+---
+## List of sources worth looking at
+- https://en.wikipedia.org/wiki/Database_normalization
+- https://github.com/ronsavage/SQL
+- https://en.wikibooks.org/wiki/Structured_Query_Language

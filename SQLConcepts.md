@@ -30,14 +30,14 @@ In addition, a database provides the following benefits over manually written da
 The scope of SQL includes data query, data manipulation (insert, update and delete), data definition (schema creation and modification), 
 and data access control.
 
-SQL has many types of statements makes it a collection of sublanguages which are commonly consists of:
+SQL has many types of statements makes it a collection of sublanguages which is commonly consist of:
 - [Data Definition Language](https://en.wikipedia.org/wiki/Data_definition_language) (DDL) - the sublanguage used for defining data 
 elements.
 
 - [Data Manipulation Language](https://en.wikipedia.org/wiki/Data_manipulation_language) (DML) - the sublanguage used for manipulating 
 data stored in the database such as inserting and deleting contents.
 
-- [Data Control Language](https://en.wikipedia.org/wiki/Data_control_language) (DCL) - the sublanguage used for controling the access of 
+- [Data Control Language](https://en.wikipedia.org/wiki/Data_control_language) (DCL) - the sublanguage used for controlling the access of 
 data stored in the database.
 
 - [Data Query Language](https://en.wikipedia.org/wiki/Data_query_language) (DQL) - the sublanguage used for querying data within schema 
@@ -47,7 +47,7 @@ objects. The purpose of DQL commands is to get the schema relation based on the 
 
 ## Language Elements of SQL
 - Clause - which are constituent components of statements and queries. (In some cases, these are optional.)
-- Expressions - are statements that produce values either sclar or table with rows and columns. 
+- Expressions - are statements that produce values either scalar or table with rows and columns. 
 - Predicates - specifies conditions that evaluates to [ternary logic](https://en.wikipedia.org/wiki/Ternary_logic).
 - Queries - retrieves data based on specific criteria. 
 - Statements - which may have a persistent effect on schemata and data, or may control transactions, program flow, connections, 
@@ -64,7 +64,7 @@ sessions, or diagnostics.
     - Associative Entity
 
 2. Table - are objects that contains rows and columns. 
-    - row - corresponds to an intance of an entity
+    - row - corresponds to an instance of an entity
     - column - corresponds to the attributes 
 
 3. Relation - may specify if the relationship is mandatory or optional
@@ -99,6 +99,36 @@ sessions, or diagnostics.
 | `as`     | Used to changes columns when viewing results. |
 
 <!-- ### Unary Operator -->
+
+---
+
+### SQL
+- Operations within DBs must have the ability operate on sets of rows; relational algebra offers this possibility
+- Language should describe what should be done and not how to do it
+
+---
+### SQL Statements
+
+- DML
+- DDL
+- DQL
+- DCL
+
+
+---
+### Languge Elements
+
+- statements
+- clauses (division of statements)
+- predicates
+- expressions (evaluates to a value)
+- object names 
+- values
+- operators
+	- arithmetic operators
+	- concatenation operator
+	- comparison operator
+	- boolean operator 
 
 
 ---
