@@ -159,9 +159,14 @@ cl:: = [cl:order_by] |
 		[cl:join] | 
 		[cl:group_by] | 
 		[cl:model]
-		
+
 	order_by ::= order by -- [order_by:subclause] --
-		subclause ::= -- [expr] | [position] | [expr] [position] | [id::alias] | asc | desc -- --, [subclause] --  
+			subclause ::= [expr] | 
+			[position] | 
+			[expr] [position] | 
+			[id::alias] | 
+			asc | 
+			desc --, [subclause] --  
 
 	for_update ::= for update -- of | [for_update:subclause] --;
 		subclause ::= -- [id::schema]. -- -- [id::table] | [id::view] | [id::column] -- --, [for_update] --
