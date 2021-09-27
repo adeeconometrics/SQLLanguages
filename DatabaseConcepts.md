@@ -1,3 +1,12 @@
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+
 # Database Concepts
 
 This document contains concepts in Database Management Systems (DBMS). 
@@ -13,14 +22,3 @@ it proposes three views in systems development:
 <img src= "assets/img/ThreeSchemaModel_1975.png" class = "center">
 ---
 # Reference
-
-
-
-<style>
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-</style>
