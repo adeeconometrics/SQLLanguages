@@ -1,26 +1,35 @@
 # SQLLanguages
-Contains a collection of language overview for SQL languages. Currently being created.
 
-This repository is intented for quick overview of SQL implmentation from different vendors. For each language, SQL statements will be covered such as:
+This repository contains a quick overview of SQL implementation from different vendors. 
+For each vendor-specific implementation, SQL statements will cover:
 - DDL - Data Definition Language
 - DQL - Data Query Language
 - DML - Data Manipulation Language
 - DCL - Data Control Language
 
 --- 
-## SQL Data types
-- `character`
-- `varchar`
-- `boolean`
-- `smallint`
-- `integer`
-- `decimal`
-- `numeric`
-- `real`
-- `float`
-- `double precision`
-- `date`
-- `time`
-- `timestamp`
-- `clob`
-- `blob`
+## SQL Primitive Data types
+- Character types
+    - character (`char`)
+    - character varying (`varchar`)
+    - character large object (`clob`)
+
+- National Character Types
+    - national character (`nchar`)
+    - national varying character (`nchar varying`)
+    - national character large object (`nclob`)
+
+- Binary Types
+    - binary (`binary`)
+    - binary varying (`varbinary`)
+    - binary large object (`blob`)
+
+- Numeric Types
+    - exact numeric types (`numeric`, `decimal`, `smallint`, `integer`, `bigint`)
+    - approximate numeric types (`float`, `real`, `double precision`)
+    - decimal floating-point type (`decfloat`)
+- Datetime types (`date`, `time`, `timestamp`)
+- Interval type (`interval`)
+- Boolean
+- XML
+- JSON
