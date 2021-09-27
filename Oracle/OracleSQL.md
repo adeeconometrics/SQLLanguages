@@ -5,11 +5,26 @@ The grammar below express syntactical constructions of Oracle SQL Database lite 
 
 
 ```
-SQL ::= [ddl:stmt] | [dml:stmt] | [dql:stmt] | [tcl:stmt]
+SQL ::= [ddl:stmt] | 
+		[dml:stmt] | 
+		[dql:stmt] | 
+		[tcl:stmt]
 
-ddl:stmt ::= [stmt:create] | [stmt:alter] | [stmt:drop] | [stmt:grant] | [stmt:revoke]
+ddl:stmt ::= [stmt:create] | 
+		[stmt:alter] | 
+		[stmt:drop] | 
+		[stmt:grant] | 
+		[stmt:revoke]
 
-	create ::= [create:schema] | [create:sequence] | [create:synonym]  | [create:table] | [create:user] | [create:view] | [create:index]
+	create ::= [create:schema] | 
+			[create:sequence] | 
+			[create:synonym]  | 
+			[create:table] | 
+			[create:user] | 
+			[create:view] | 
+			[create:index] | 
+			[create:database]
+
 		schema ::= create schema [id::schema].[schema:create_table_list];
 			create_table_list ::= create table [create:table]
 
@@ -40,7 +55,17 @@ ddl:stmt ::= [stmt:create] | [stmt:alter] | [stmt:drop] | [stmt:grant] | [stmt:r
 		index ::= create -- unique -- index -- [id::schema]. -- [id::index] on -- [id::schema]. -- [id::table]([index:columns]) -- key columns = [number] --;
 			columns ::= [id::column] -- asc | desc -- --, [columns] -- 
 
-	alter ::= [alter:sequence] | [alter:session] | [alter:table] | [alter:user] | [alter:view] 
+		database ::= create database [id::database] [database:parameters];
+			parameters ::= [parameters:parameter] --, [parameters:parameter] --
+				parameters ::= database_id [id::database] |
+						extend_size [value::npages] |
+						database_size [value::maxbytes]
+
+	alter ::= [alter:sequence] | 
+			[alter:session] | 
+			[alter:table] | 
+			[alter:user] | 
+			[alter:view] 
 
 		sequence ::= alter sequence -- [id::schema]. -- [id::sequence] -- -- increment by integer | maxvalue integer | minvalue integer | nomaxvalue | nominvalue --;
 		session ::= alter session set [value::date_value] = [value::date_value];
@@ -49,7 +74,14 @@ ddl:stmt ::= [stmt:create] | [stmt:alter] | [stmt:drop] | [stmt:grant] | [stmt:r
 		view ::= alter view -- [id::schema]. -- [id::view] compile; 
 
 
-	drop ::= [drop:index] | [drop:schema] | [drop:sequence] | [drop:synonym] | [drop:table] | [drop:user] | [drop:view] | [drop:index]
+	drop ::= [drop:index] | 
+			[drop:schema] | 
+			[drop:sequence] | 
+			[drop:synonym] | 
+			[drop:table] | 
+			[drop:user] | 
+			[drop:view] | 
+			[drop:index]
 
 		index ::= drop index -- [id::schema]. -- [id::index];
 		schema ::= drop schema [id::schema]. -- cascade | restrict --;
@@ -72,7 +104,12 @@ ddl:stmt ::= [stmt:create] | [stmt:alter] | [stmt:drop] | [stmt:grant] | [stmt:r
 				privelage ::= insert | delete | update | select | reference 
 
 
-dml:stmt ::= [stmt:insert] | [stmt:select] | [stmt:delete] | [stmt:update] | [stmt:subquery] 
+dml:stmt ::= [stmt:insert] |
+		[stmt:select] |
+		[stmt:delete] |
+		[stmt:update] |
+		[stmt:subquery] 
+
 	insert ::= insert into -- [id::schema]. -- -- [id::table] | [id::view] -- -- ([insert:column_list]) -- -- values ([insert:expr_list]) | [subquery] --;
 		column_list ::= [id::column] --, [column_list] -- 
 		expr_list ::= [expr] --, [expr_list] --
@@ -90,7 +127,10 @@ dql:stmt ::= [dql:select]
 	select ::=
 
 
-tcl:stmt ::= [tcl:commit] | [tcl:savepoint] | [tcl:rollback] | [tcl:set_transaction]
+tcl:stmt ::= [tcl:commit] | 
+		[tcl:savepoint] | 
+		[tcl:rollback] | 
+		[tcl:set_transaction]
 
 		::| commit and commit work are equivalent in meaning
 	commit ::= commit -- work --;
@@ -110,7 +150,16 @@ query = [query:spec]
             subexpr_1 ::= from [subexpr_1:from_list] where [expr:condition] -- [cl:where] -- -- starts with [expr:condition] connected by [expr:condition] | group by [dml:stmt:insert:expr_list]-- -- having [expr:condition] --
  
 
-cl:: = [cl:order_by] | [cl:for_update] | [cl:constraint] | [cl:drop] | [cl:factoring] | [cl:where] | [cl:join] | [cl:group_by] | [cl:model]
+cl:: = [cl:order_by] | 
+		[cl:for_update] | 
+		[cl:constraint] | 
+		[cl:drop] | 
+		[cl:factoring] | 
+		[cl:where] | 
+		[cl:join] | 
+		[cl:group_by] | 
+		[cl:model]
+		
 	order_by ::= order by -- [order_by:subclause] --
 		subclause ::= -- [expr] | [position] | [expr] [position] | [id::alias] | asc | desc -- --, [subclause] --  
 
