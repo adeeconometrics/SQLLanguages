@@ -177,12 +177,10 @@ cl:: = [cl:order_by] |
 				not null | 
 				unique | 
 				primary key |
-				[col:references_constraint] | 
+				[column:references_constraint] | 
 				check([expr:condition]) --  
 
-			references_constraint ::= references -- [id::schema]. -- [id::table] -- ([id::column]) | 
-				on delete cascade | 
-				([id::column]) on delete cascade --
+			references_constraint ::= references -- [id::schema]. -- [id::table] -- ([id::column]) | on delete cascade | ([id::column]) on delete cascade --
 
 		table ::=  constraint [id::constraint] |
 				-- unique | primary -- ([table:column_list]) -- key columns = [number] -- |
