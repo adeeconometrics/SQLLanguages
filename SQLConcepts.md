@@ -140,3 +140,4 @@ sessions, or diagnostics.
 - https://en.wikipedia.org/wiki/Data_control_language
 - https://en.wikipedia.org/wiki/Data_query_language
 - https://en.wikipedia.org/wiki/Ternary_logic
+- https://en.wikibooks.org/wiki/Structured_Query_Language/Snippets
