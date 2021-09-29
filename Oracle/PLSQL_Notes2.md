@@ -215,9 +215,66 @@ in the active set and no error is  recorded.
 
 ---
 ## Explicit Cursor Attributes
+- When appended to the cursor variable name, these attributes return useful information
+about the execution of a cursor manipulation statement. 
+
+| Attribute  | Type    | Description                                               |
+|------------|---------|-----------------------------------------------------------|
+| `%isopen`  | Boolean | Returns `true` if cursor is open.                         |
+| `%notfound`| Boolean | Returns `true` if most recent fetch did not return a row. |
+| `%found`   | Boolean | Returns `true` if most recent fetch returned a row.       |
+| `%rowcount`| Number  | Returns the total number of rows `fetch`ed so far.        |
+
 
 ---
 ## Cursor For Loop
+- Process rows in a explicit cursor.
+- It is a shortcut because the cursor is opened, a row is  fetched once for each 
+iteration in the loop, the loop exits  when the last row is processed, and the cursor is 
+closed  automatically.
+
+- You can simplify your coding by using a cursor FOR loop instead of the `open`, `fetch`, and `close` statements. 
+- No variables are declared to hold the fetched data and no `into` clause is required. 
+
+Syntax:
+
+```
+for [id::record] in [id::cursor] loop
+    [stmt];
+end loop;
+```
+
+Example:
+
+```SQL
+declare
+    cursor emp_cur is 
+        select employee_id, last_name
+            from employees
+            where department_id = 50;
+
+begin
+    for _iter in emp_cur loop
+        dbms_output.put_line(
+            _iter || ' ' || _iter.last_name
+        );
+    end loop;
+end;
+```
+
+<br>
+
+### Guidelines for Cursor `FOR` loops
+
+- Do not declare the record that controls the loop because it is declared implicitly.
+- The scope of the implicit record is restricted to the loop, you cannot reference the
+record outside the loop.
+- You can access fetched data using `[id::iterator].[id::column]`.
+- Testing cursor attributes are still valid.
+- Cursor is closed automatically.
+- You can specify the `select` statement on which the cursor is based directly in the for 
+loop: `for [id:record] in [stmt:select] loop [stmt] end loop;`.
+    - In this case, you cannot reference cursor attributes. 
 
 ---
 ## References
