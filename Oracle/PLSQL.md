@@ -1,4 +1,4 @@
-PLSQL -- does not inlcude error handling code and incomplete expression for object types 
+PLSQL -- does not include error handling code and incomplete expression for object types 
 
 ```
 declare ::= declare [declare_clause]
@@ -44,8 +44,8 @@ object ::= -- create | create or replace -- type [name::object] as object ([vari
 
 - PLSQL fully supports SQL data types.
 - PL/SQL supports both static and dynamic SQL
-	- static SQL are known at compile time
-	- dynamic SQL are known until runtime
+	- static SQL is known at compile time
+	- dynamic SQL is known until runtime
 
 - PLSQL achieves high performance because an entire block of statements are sent to the DB at one time which reduce network traffic.
 - PL/SQL stored subprograms are compiled once and stored in executable form, so subprogram calls are efficient.
