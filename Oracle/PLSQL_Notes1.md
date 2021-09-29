@@ -355,7 +355,7 @@ end;
 
 ## Looping Statements
 PL/SQL provides 3 kinds of loops:
-- basic loops
+- basic loops - useful when statements inside the loop must execute at least once.
 - for-loop
 - while-loop
 
