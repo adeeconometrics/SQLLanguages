@@ -6,6 +6,7 @@ For each vendor-specific implementation, SQL statements will cover:
 - DQL - Data Query Language
 - DML - Data Manipulation Language
 - DCL - Data Control Language
+- TCL - Transaction Control Language 
 
 --- 
 ## SQL Primitive Data types
