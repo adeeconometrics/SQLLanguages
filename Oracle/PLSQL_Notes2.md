@@ -43,7 +43,7 @@ types such as `date`, `varchar2`, or `number` or using attributes such as `%type
 Syntax:
 ```
 type [id::type] is record ([fields]);
-[id] [id::type];
+[id] [type:record];
 
 fields ::= [id] [type] -- not null | defatult := [value] -- --, [fields] --
 ```
@@ -124,11 +124,11 @@ end;
 
 ### Explicit Cursor
 - Allows you to retrieve multiple rows from a database table, have a pointer to each row 
-that is  retrieved, and work on the rows one at a time.
+that is retrieved, and work on the rows one at a time.
 - Reasons to use an explicit cursor:
-    - It is the only way in PL/SQL to retrieve more than one row from a table.
-    - Each row is fetched by a separate program statement, giving  the programmer more 
-    control over the processing of the  rows.
+    - It is **the only way in PL/SQL** to retrieve more than one row from a table.
+    - Each row is fetched by a separate program statement, giving the programmer **more 
+    control** over the processing of the rows.
 
 Example:
 
@@ -270,7 +270,7 @@ end;
 - Do not declare the record that controls the loop because it is declared implicitly.
 - The scope of the implicit record is restricted to the loop. You cannot reference the
 record outside the loop.
-- You can access fetched data using `[id::iterator].[id::column]`.
+- You can access fetched data using `[id::cursor_local].[id::column]`.
 - Testing cursor attributes are still valid.
 - Cursor is closed automatically.
 - You can specify the `select` statement on which the cursor is based directly in the for 
@@ -347,8 +347,8 @@ declare
 begin
     for _cursor in employees_cur(10) loop
         dbms_output.put_line(
-            _cursor_.country_id || ' ' 
-            || _cursor_.country_name
+            _cursor.country_id || ' ' 
+            || _cursor.country_name
         );
     end loop;
 end;
@@ -366,7 +366,7 @@ Syntax:
 ```
 cursor [id::name] is 
     [stmt:select]
-        for update -- of [id::] -- -- [wait] | nowait --  
+        for update -- of [id] -- -- [wait] | nowait --  
 ```
 If the row have been locked by another session:
 - `nowait` returns an Oracle server error immediately
