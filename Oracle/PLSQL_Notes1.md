@@ -63,7 +63,7 @@ Retrieving data in PL/SQL Example:
 ```SQL
 declare 
     v_emp_hiredate employees.hire_date%TYPE;
-    v_emp_salary employyes.salary%TYPE;
+    v_emp_salary employees.salary%TYPE;
 
 begin
     select hire_date, salary
@@ -355,9 +355,9 @@ end;
 
 ## Looping Statements
 PL/SQL provides 3 kinds of loops:
-- basic loops - useful when statements inside the loop must execute at least once.
-- for-loop
-- while-loop
+- basic loops - useed when statements inside the loop must execute at least once.
+- for-loop - used when beginning and end of the loop is known. 
+- while-loop - terminates when a condition is `false` or `null`.
 
 Syntactical construction for basic loops
 ```
@@ -377,14 +377,18 @@ end loop;
 range ::= [value::lower] .. [value::upper]
 ```
 - `revserse` causes the loop to decrement each iteration from upper bound to lower bound.
+- Bounds should not be `null`.
 
-Syntactical construction for for-loops
+Syntactical construction for while-loops
 ```
 ::| loop condition terminates when false or null
 while_loop ::= while [expr:conditional] loop
     [stmt];
 end loop;
 ```
+- If the condition yields `null`, then the loop is 
+bypassed and control passes to the statement that follows 
+the loop.
 
 ---
 ## References
