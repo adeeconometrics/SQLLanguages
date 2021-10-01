@@ -182,7 +182,6 @@ from it one at a time. Once done, you have to `close` the cursor.
     - `open` statement allocates memory for a context area.
     - `open` statement executes the `select` statement in the cursor declaration,
     returning the results into the active set.
-    - `open` statement positions the pointer to the first row.
 
 3. `fetch` the contents of that cursor. Retrieve the current row into variables.
     - Inside this statement, the cursor will unpack its contents. The `exit when`
@@ -375,7 +374,7 @@ If the row have been locked by another session:
 - `wait n` waits for `n` seconds, and returns an Oracle server error if other sessions
 is still locking the rows at the end of that time. 
 
-- No argument: teels the seerver to wait indefinitely until the rows are available.
+- No argument: tells the server to wait indefinitely until the rows are available.
 
 Example:
 
@@ -392,7 +391,7 @@ declare
 
 ### Using `WHERE CURRENT OF` clause
 - Used in conjunction with the `FOR UPDATE` clause to refer to the current row (the most recently 
-`fetch` row) in an explicit cursor i.e. you must include a `for update` clause in the cursor 
+`fetch` row) in an explicit cursor i.e., you must include a `for update` clause in the cursor 
 query so that the rows are locked on `open`.
 - Used in the `update` or `delete` statement, whereas the `for update` clause is specified in the 
 cursor declaration.
@@ -407,7 +406,7 @@ Syntax:
 ```
 where current of [id::cursor];
 ```
-- `[id::cursor]` is the name of the cursor that must hve been declared with the `for update` clause. 
+- `[id::cursor]` is the name of the cursor that must have been declared with the `for update` clause. 
 
 Example:
 
