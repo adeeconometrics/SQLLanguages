@@ -185,7 +185,7 @@ from it one at a time. Once done, you have to `close` the cursor.
 
 3. `fetch` the contents of that cursor. Retrieve the current row into variables.
     - Inside this statement, the cursor will unpack its contents. The `exit when`
-    checks to see if the `fetch` reached the end that is `exit when [id::cursor]%notfound`.
+    checks to see if the `fetch` reached the end i.e. `exit when [id::cursor]%notfound`.
     ```
     fetch [id::cursor] into [id::variable,...]
     ```
@@ -210,7 +210,7 @@ columns in the `select` statement, and be sure that the data types are compatibl
 - Use `%type` to ensure data types are compatible between variable and table.
 - Test to see whether the cursor contains rows.
 - If a fetch acquires no values, then there are no rows to  process (or left to process) 
-in the active set and no error is recorded.
+in the active set, and no error is recorded.
 - You can use the `%notfound` cursor attribute to test for the exit condition.
 
 ---
@@ -370,7 +370,7 @@ cursor [id::name] is
 If the row have been locked by another session:
 - `nowait` returns an Oracle server error immediately
     - Tells the server not to wait if any of the requested rows have been locked by another user.
-    - Control is immediately returned to your program so that it can do other work before trynig again to acquire the lock.
+    - Control is immediately returned to your program so that it can do other work before trying again to acquire the lock.
 - `wait n` waits for `n` seconds, and returns an Oracle server error if other sessions
 is still locking the rows at the end of that time. 
 
