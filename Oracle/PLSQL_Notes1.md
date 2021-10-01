@@ -14,16 +14,16 @@ PL/SQL accepts the following kinds of SQL statements:
     - `savepoint`
 
 DCL and DDL statements cannot be directly executed in PL/SQL since they are executed at 
-run time. The recommended way of working with DDL and DCL sttaements within PL/SQL is to 
+run time. The recommended way of working with DDL and DCL statements within PL/SQL is to 
 use Dynamic SQL with the `execute immediate` statement.
 
 > Dynamic SQL is a programming technique that enables you to build SQL statements 
-dynamically at runtime. You can create more general purpose, flexible applications by 
+dynamically at runtime. You can create more general-purpose, flexible applications by 
 using dynamic SQL because the full text of a SQL statement may be unknown at compilation.
 
 ---
 ## `SELECT` statement in PL/SQL
-- Retrieves data from a database into a PL/SQL variable with a `select`so it can work in 
+- Retrieves data from a database into a PL/SQL variable with a `select` so it can work in 
 PL/SQL.
 
 ```SQL
@@ -76,7 +76,7 @@ begin
 end;
 ```
 
-- Output the sum of salaries for all employess in a specific department
+- Output the sum of salaries for all employees in a specific department
 
 ```SQL
 declare 
@@ -94,10 +94,10 @@ end;
 ```
 
 - The order of variables must correspond with the order of the items selected.
-- The `select` statement within the PL/SQL block fall into ANSI classification of 
-enbedded SQL for which the following rule applies: *embedded querie must return exactly 
+- The `select` statement within the PL/SQL block falls into ANSI classification of 
+embedded SQL for which the following rule applies: *embedded queries must return exactly 
 one row*.
-    - A query that returns more than one row or no rows genertes an error.
+    - A query that returns more than one row or no rows generates an error.
 
 ### Create and Copy of Original Table
 - In some cases, tables should not be modified.
@@ -199,8 +199,8 @@ row.
 <br>
 
 ### Cursor Attributes for Implicit Cursors
-- Cursor attributes are automatically declared variables that  allow you to evaluate what 
-happened when a cursor was last  used.
+- Cursor attributes are automatically declared variables that allow you to evaluate what 
+happened when a cursor was last used.
 - Attributes for implicit cursors are prefaced with "SQL".
 - Use these attributes in PL/SQL statements, but not in SQL statements.
 - Using cursor attributes can test the outcome of your SQL statements. 
@@ -212,8 +212,8 @@ happened when a cursor was last  used.
 | Attribute     | Description                                                                                    | 
 |---------------|------------------------------------------------------------------------------------------------|
 | `SQL%FOUND`   | Evaluates to `true` if the most recent SQL statement returned at least one row                 |
-| `SQL%NOTFOUND`| Evaluates to `true` is the  most recent SQL statement did not return  even one row.            | 
-| `SQL%ROWCOUNT`| An integer value that represents the number  of rows affected by the most recent SQL  statement|
+| `SQL%NOTFOUND`| Evaluates to `true` is the most recent SQL statement did not return even one row.            | 
+| `SQL%ROWCOUNT`| An integer value that represents the number of rows affected by the most recent SQL  statement|
 
 
 <br>
@@ -253,7 +253,7 @@ end;
 
 # Writing Control Structure
 
-Control structures usually involve conditional expressions that evaluates to boolean
+Control structures usually involve conditional expressions that evaluate to a boolean
 values. PL/SQL uses a ternary logic that involves `null` values. The evaluation of 
 Ternary logical statements are described [here](https://en.wikipedia.org/wiki/Three-valued_logic).
 
