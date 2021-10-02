@@ -124,7 +124,25 @@ dml:stmt ::= [stmt:insert] |
 
 dql:stmt ::= [dql:select]
 
-	select ::=
+	select ::= select -- all |distinct | dinstincrow -- [select:cols]
+			from [select:from_clause] -- [select:join_clause] --
+			-- [select: where] -- 
+			-- [select:group_by] -- 
+			-- [select:having] -- 
+			-- [select:order_by] -- 
+			-- [select:into] --
+			-- for update | lock in share mode -- 
+
+		cols ::= [id::column] --, [id::column] --
+		from_clause ::= [id::table] -- as [id::table_alias] -- | [dql:select]
+		join_clause ::= inner join | left join | right join | full outer join | cross join
+		where ::= where [expr:conditional]
+		group_by ::= group by [group_by:lexemes] -- asc | desc --
+			lexemes ::= [id::column] | [expr] | position
+		having ::= having [expr:conditional]
+		order_by ::=  order by [oder_by:lexemes] -- asc | desc --
+			lexemes ::= [id::column] | [expr] | position
+		into ::= into outfile '[id::file]' | into dumpfile [id::file] | into [id:variables,...]
 
 
 tcl:stmt ::= [tcl:commit] | 
