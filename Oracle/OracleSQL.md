@@ -135,7 +135,8 @@ dql:stmt ::= [dql:select]
 
 		cols ::= [id::column] --, [id::column] --
 		from_clause ::= [id::table] -- as [id::table_alias] -- | [dql:select]
-		join_clause ::= inner join | left join | right join | full outer join | cross join
+		join_clause ::= [join_clause:lexemes] on [expr:conditional]
+			lexemes ::= inner join | left join | right join | full outer join | cross join
 		where ::= where [expr:conditional]
 		group_by ::= group by [group_by:lexemes] -- asc | desc --
 			lexemes ::= [id::column] | [expr] | position
@@ -230,4 +231,7 @@ cl:: = [cl:order_by] |
 
 ```
 
-Reference: https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm#i1007881
+References: 
+- https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm#i1007881
+- https://docs.oracle.com/cd/E17952_01/mysql-5.6-en/select.html
+- https://docs.oracle.com/javadb/10.8.3.0/ref/rrefsqlj29840.html#rrefsqlj29840
