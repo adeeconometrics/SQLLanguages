@@ -1,6 +1,6 @@
 # Creating and Calling Procedures
 
-### Definition: Subprogram
+## Definition: Subprogram
 - A subprogram is either a procedure or a function.
     - You use a function to return a value.
     - You use a procedure to perform an action. 
@@ -46,14 +46,27 @@ begin
     -- [stmt:sql] -- 
 end;
 
-::| Subprograms
-create -- or replace -- procedure [id] -- [parameters, ...] -- is|as
-    [id:variables]
+::| Subprograms:procedure
+create -- or replace -- procedure [id] -- [id::parameter] [type], ... -- [lexeme]
+    [id:variables] [type] -- := [value:default] --;
     -- [id:records] --
     -- [id:cursors] --
 begin
     -- [stmt:sql] --
 end;
+
+::| Subprograms:function
+create -- or replace -- function [id::function] -- [id::parameter] [type], ... --
+    return [type] [lexeme] 
+    [id:variables] [type] -- := [value:default] --;
+    -- [id:records] --
+    -- [id:cursors] --
+begin
+    -- [stmt:sql] --
+    return [expr];
+end [id::function];
+
+lexeme:: = is | as
 ```
 
 <br>
@@ -79,7 +92,7 @@ end;
 
 <br>
 
-### Definition: Procedure
+## Definition: Procedure
 - A procedure is a named PL/SQL block.
 - A procecure is used to perform an action. 
 - A procedure is compiled and stored in the database as a schema obeject. 
@@ -137,6 +150,76 @@ end;
     - use a `create or replace procedure` statement to overwrite the existing code.
     - `drop` the procedure first then execute `create procedure` statement. 
 
+## Definition: Functions
+- Functions are part of PL/SQL expressions which always returns a value. 
+
+Syntax:
+```
+create -- or replace -- function [id] -- [id::parameter] [type], ... --
+    return [type] [lexeme] 
+    [id:variables] [type] -- := [value:default] --;
+    -- [id:records] --
+    -- [id:cursors] --
+begin
+    -- [stmt:sql] --
+    return [expr];
+end;
+```
+
+Example: 
+
+```sql
+create or replace function get_salary 
+    (p_id in employees.employee_id%type)
+    return number is
+
+    v_salary employees.salary%type := 0;
+
+begin
+    select salary
+        into v_salary
+        from employees
+        where employee_id = p_i;
+    return v_sal;
+end get_salary;
+```
+
+<br>
+
+### Invoking Functions
+- Functions are first-class in PL/SQL, they can be invoked anywhere -- as function parameters, as values on a parameter, as local variables, etc.
+- Most functions have parameters, but not all. 
+- Although a function using `out` can be invoked from a  PL/SQL procedure or anonymous block, it cannot be used  in SQL statements.
+
+Syntax:
+```
+begin
+    [id::function] -- ([value:arguments], ...) --;
+end;
+```
+
+Example:
+```SQL
+declare
+    v_salary employees.salary%type;
+begin
+    v_salary := get_salary(999);
+end;
+```
+
+<br>
+
+### Notes of Functions
+- Functions can accept `out` and `in out` parameters, however, Oracle recommends against it.
+- Functions must return a single value.
+- In SQL expresions, a function must obey specific rules to control *side effects*.
+    - Avoid the following inside a function:
+        - any kind of DML or DDL statements
+        - `commit` or `rollback`
+        - altering values of global variable
+- In PL/SQL expressions, a function identifier acts like a variable whose value depend on the parameters passed to it.
+- A function must have a `return` statement in the executable section -- between `begin` and `end`.
+
 ----
 
 ## Notes on Parameters
@@ -163,3 +246,4 @@ end;
 
 # References
 - https://docs.oracle.com/database/121/LNPLS/subprograms.htm#LNPLS653
+- https://stackoverflow.com/questions/24363898/out-in-out-parameters-in-pl-sql-function
