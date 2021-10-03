@@ -137,6 +137,27 @@ end;
     - use a `create or replace procedure` statement to overwrite the existing code.
     - `drop` the procedure first then execute `create procedure` statement. 
 
+----
+
+## Notes on Parameters
+- Parameters are variables that communicates with the named procedure / function.
+- Parameters act like local variables.
+- Convention `p_[name]` prefix.
+
+### Types of Parameters
+- Formal Parameter - parameters declared in the procedure heading.
+- Actual Parameter - actual values that are passed into the procedure (also known as arguments).
+    - can be literal values, variables, or expression
+
+### Modes on Passing Parameters
+- `in` (default) - provides values for a subprogram to process
+- `out` - returns a value to the caller.
+- `in out` - supplies input value which can be returned as a modified value to the caller.
+
+### Syntax for passing parameters
+- Positional - pass the parameter in the order that it is declared e.g. `procedure (3, 'True', 45.0)`.
+- Named - pass the parameter with the name associated with it; one may not follow order e.g. `procedure(p_1=>3, p_3=>45.0, p_2 => 'True')`.
+- Combination - pass the parameter with respect to its order; one may annotate the name of the parameter e.g. `procedure(2, p_2= 'True', 45,0)`.
 
 ---
 
