@@ -1,4 +1,4 @@
-# Creating and Calling Procedures
+# PL/SQL Subprograms
 
 ## Definition: Subprogram
 - A subprogram is either a procedure or a function.
