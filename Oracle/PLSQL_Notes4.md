@@ -95,7 +95,7 @@ lexeme:: = is | as
 ## Definition: Procedure
 - A procedure is a named PL/SQL block.
 - A procecure is used to perform an action. 
-- A procedure is compiled and stored in the database as a schema obeject. 
+- A procedure is compiled and stored in the database as a schema object. 
 
 Syntax:
 ```
@@ -240,7 +240,8 @@ end;
 ### Syntax for passing parameters
 - Positional - pass the parameter in the order that it is declared e.g. `procedure (3, 'True', 45.0)`.
 - Named - pass the parameter with the name associated with it; one may not follow order e.g. `procedure(p_1=>3, p_3=>45.0, p_2 => 'True')`.
-- Combination - pass the parameter with respect to its order; one may annotate the name of the parameter e.g. `procedure(2, p_2= 'True', 45,0)`.
+- Combination - pass the parameter with respect to its order; one may annotate the name of the parameter e.g. `procedure(2, p_2= 'True', 45,0)`. 
+    - If Combination notation is used, the positional parameters must come first before the named parameters.
 
 ---
 
